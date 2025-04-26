@@ -23,6 +23,7 @@ Key features:
 
 
 MVP Scope:
+
   Must Have:
     1. File upload + text paste interface
     2. AI generates at least 10 questions per document
@@ -30,11 +31,11 @@ MVP Scope:
       1. Question view
       2. Answer selection
       3. Feedback (potentially essay-based questions too)
-Stretch Goals:
-  1. Difficulty level selector
-  2. Review wrong answers at the end
-  3. "Quiz Me Again" option for quick reattempts
-  4. Progress tracking (Improved x% over last session and other statistics)
+  Stretch Goals:
+      1. Difficulty level selector
+      2. Review wrong answers at the end
+      3. "Quiz Me Again" option for quick reattempts
+      4. Progress tracking (Improved x% over last session and other statistics)
 
 
 User Flow (Basic):
