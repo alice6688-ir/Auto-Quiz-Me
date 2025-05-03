@@ -47,7 +47,7 @@ def generate_quiz_questions(text):
     Notes:
     {text}
 
-    Return your answer as JSON in this format:
+    Return your answer ONLY with the JSON, and make sure it is valid in this format:
     [
       {{
         "question": "What is X?",
@@ -67,7 +67,7 @@ def generate_quiz_questions(text):
         response = client.chat.completions.create(
             model=MODEL,
             messages=messages,
-            max_tokens=100,
+            max_tokens=1000,
             temperature=0.7,
         )
 
