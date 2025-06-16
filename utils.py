@@ -80,21 +80,28 @@ def generate_quiz_questions(text, difficulty="Medium"):
     
     Based on the following notes, generate 10 multiple choice questions appropriate for {difficulty} difficulty level.
     For each question, provide 4 choices labeled A, B, C, D. 
-    Also, mark the correct answer.
+    
+    IMPORTANT: The "answer" field must contain ONLY a single letter (A, B, C, or D), not the full text of the answer.
 
     Notes:
     {text}
 
-    Respond ONLY with valid JSON in this format:
+    Respond ONLY with valid JSON in this EXACT format:
     
     [
       {{
-        "question": "What is X?",
-        "choices": ["A", "B", "C", "D"],
-        "answer": "B"
+        "question": "What is photosynthesis?",
+        "choices": ["The process of making food from sunlight", "The process of breathing", "The process of reproduction", "The process of growth"],
+        "answer": "A"
       }},
-      ...
+      {{
+        "question": "Where does photosynthesis occur?",
+        "choices": ["In the roots", "In the chloroplasts", "In the stem", "In the flowers"],
+        "answer": "B"
+      }}
     ]
+    
+    Remember: answer field must be A, B, C, or D only!
     """
 
     messages = [
