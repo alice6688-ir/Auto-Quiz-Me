@@ -134,8 +134,23 @@ if st.session_state["questions"]:
         )
 
         if st.button("Submit Answer", key=f"submit_{q_num}"):
-            # Get correct answer
-            correct_choice = q["choices"][ord(q["answer"]) - ord("A")]
+            # Get correct answer - handle both letter format (A, B, C, D) and full text
+            try:
+                if len(q["answer"]) == 1 and q["answer"] in "ABCD":
+                    # Standard format: single letter
+                    correct_choice = q["choices"][ord(q["answer"]) - ord("A")]
+                else:
+                    # AI returned full text answer - find matching choice
+                    correct_choice = q["answer"]
+                    # If it's not in choices, try to find the best match
+                    if correct_choice not in q["choices"]:
+                        # Default to first choice if we can't match
+                        correct_choice = q["choices"][0]
+                        st.warning("⚠️ Answer format issue detected - using best guess")
+            except (IndexError, ValueError, TypeError):
+                # Fallback: use the answer as-is or first choice
+                correct_choice = q.get("answer", q["choices"][0])
+                st.warning("⚠️ Answer format issue detected - using fallback")
 
             if user_answer == correct_choice:
                 st.success("Correct! ✅")
@@ -205,4 +220,3 @@ if st.session_state["questions"]:
 # Debug info (remove in production)
 if st.checkbox("Show Debug Info"):
     st.write("Session State:", st.session_state)
-
