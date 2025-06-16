@@ -6,7 +6,7 @@ import docx
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="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"
+    api_key=""
 )
 
 MODEL = "gpt-3.5-turbo"
